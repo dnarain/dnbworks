@@ -1,0 +1,17 @@
+Technology Choices
+  Persistent Storage - DynamoDB
+  Middleware/Server - Node.js (look at adding Cluster for scale)
+  API - RESTful API,  look at using Amazon API GW instead of a traditional LB layer
+  
+  
+  Database 
+  
+  Customers - CustomerID1, CustomerID2…
+  Buildings - CustomerID, 
+  Units - CustomerID
+  Tentants - CustomerID, 
+  Contracts - CustomerID, ContractID, UnitID, TenantID
+  CashPayments - CustomerID, CashPaymentID, ContractID, 
+  CheckPayments - CustomerID, CheckPaymentID, ContractID
+  BouncedChecks - CustomerID, ContractID, CheckPaymentID
+
