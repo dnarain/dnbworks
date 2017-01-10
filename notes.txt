@@ -8,10 +8,50 @@ Technology Choices
   
   Customers - CustomerID1, CustomerID2…
   Buildings - CustomerID, 
+  UnitOwners - CustomerID, 
   Units - CustomerID
   Tentants - CustomerID, 
-  Contracts - CustomerID, ContractID, UnitID, TenantID
+  Contracts - CustomerID, ContractID, UnitID, TenantID, TotalAmt, Balance
   CashPayments - CustomerID, CashPaymentID, ContractID, 
   CheckPayments - CustomerID, CheckPaymentID, ContractID
   BouncedChecks - CustomerID, ContractID, CheckPaymentID
+  ClearedChecks - CustomerID, ContractID
+
+
+Use cases I haven't thought out - I am a management company and managing entire buildings or individual units for somebody else, I could have one building with 2 units - one belonging to one customer, one belonging to another 
+
+
+API
+
+/tenant
+/tenant/add
+/tenant/delete
+/tenant/update
+
+/customer
+/customer/add
+/customer/delete
+/customer/update
+
+/unit
+/unit/add
+/unit/delete
+/unit/update
+
+/contract
+/contract/add
+/contract/delete
+/contract/update
+
+/payment/cash/add
+/payment/cash/delete
+/payment/cash/update
+
+/payment/check/add
+/payment/check/delete
+/payment/check/update
+/payment/check/bounced
+/payment/check/encleared
+
+
 
