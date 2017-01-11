@@ -6,14 +6,13 @@ Technology Choices
   
   Database 
   
-  Customers - CustomerID1, CustomerID2…
-  Buildings - CustomerID, 
-  UnitOwners - CustomerID, 
-  Units - CustomerID
-  Tentants - CustomerID, 
-  Contracts - CustomerID, ContractID, UnitID, TenantID, TotalAmt, Balance
+  Customers - {CustomerID, Name, Contact Details, Notes} #a customer can be: 1 owner with units for rent, or it can be a company offering  the service to multiple owners 
+   Buildings - {CustomerID, BuildingID, BuildingName, Notes}
+  Units - {CustomerID, UnitID, BuildingID, Notes}
+  Tentants - {CustomerID, TenantID, TenantName, TenantContact, TenantCivilIDNumber, TenantCivilIDType, Notes}
+  Contracts - {CustomerID, ContractID, UnitID, TenantID, StartDate, EndDate, TotalAmt, PaymentFrequency, Balance}
   CashPayments - CustomerID, CashPaymentID, ContractID, 
-  CheckPayments - CustomerID, CheckPaymentID, ContractID
+  CheckPayments - CustomerID, CheckPaymentID, ContractID, Image
   BouncedChecks - CustomerID, ContractID, CheckPaymentID
   ClearedChecks - CustomerID, ContractID
 
@@ -23,35 +22,166 @@ Use cases I haven't thought out - I am a management company and managing entire 
 
 API
 
-/tenant
-/tenant/add
-/tenant/delete
-/tenant/update
+Name: /tenant
+Input:
+Output:
+Description:
 
-/customer
-/customer/add
-/customer/delete
-/customer/update
+Name: /tenant/add
+Input:
+Output:
+Description:
 
-/unit
-/unit/add
-/unit/delete
-/unit/update
+Name: /tenant/delete
+Input:
+Output:
+Description:
 
-/contract
-/contract/add
-/contract/delete
-/contract/update
-
-/payment/cash/add
-/payment/cash/delete
-/payment/cash/update
-
-/payment/check/add
-/payment/check/delete
-/payment/check/update
-/payment/check/bounced
-/payment/check/encleared
+Name: /tenant/update
+Input:
+Output:
+Description:
 
 
+Name: /customer
+Input:
+Output: Array of customers 
+Description: 
+
+Name: /customer/add
+Input: {
+Output: 
+Description:
+
+Name: /customer/delete
+Input:
+Output:
+Description:
+
+Name: /customer/update
+Input:
+Output:
+Description:
+
+
+Name: /unit
+Input:
+Output:
+Description:
+
+Name: /unit/add
+Input:
+Output:
+Description:
+
+Name: /unit/delete
+Input:
+Output:
+Description:
+Name: /unit/update
+
+
+Name: /contract
+Input:
+Output:
+Description:
+
+Name: /contract/add
+Input:
+Output:
+Description:
+
+Name: /contract/delete
+Input:
+Output:
+Description:
+
+Name: /contract/update
+Input:
+Output:
+Description:
+
+Name: /payments/cash
+Input:
+Output:
+Description:
+
+Name: /payments/cash/add
+Input:
+Output:
+Description:
+
+Name: /payments/cash/delete
+Input:
+Output:
+Description:
+
+Name: /payments/cash/update
+Input:
+Output:
+Description:
+
+Name: /payments/check
+Input:
+Output:
+Description:
+
+Name: /payments/check/add
+Input:
+Output:
+Description:
+
+Name: /payments/check/delete
+Input:
+Output:
+Description:
+
+Name: /payments/check/update
+Input:
+Output:
+Description:
+
+Name: /payments/check/bounced
+Input:
+Output:
+Description:
+
+Name: /payments/check/cleared
+Input:
+Output:
+Description:
+
+ACTIONS
+
+1. A: I get cash for a unit
+2. A: I get a single/series of PDCs
+3. A: I get a current check
+4. A: A check bounces
+5. A: Tenant vacates mid contract 
+6. A: Tenant absconds - without paying utilities
+7. A: Tenant renews contract
+8. A: One Tenant has  multiple units
+9. A: One unit has multiple tenants - THIS ONE IS TRICKY 
+10. A: Contract ends, we owe tenant money and have to pay it out
+11. A: We terminate contract 
+12. Q: Who all have overdue payments
+13. Q: Which checks do I have to cash today? This week? This Month?
+14. Q: Which checks 
+15. Q: Show the payment history for this tenant
+16. Q: How much money have I made from this unit/set of units/building
+17. Q: Which checks bounced this week? Today? This month?
+18. Q: How many bounced checks has this tenant given me?
+19. Q: How much rent does this tenant owe me till his contract runs out/the end of the year 
+20. Q: 
+21. A: Issue a receipt for this payment 
+
+
+FUTURE THINGS TO CONSIDER
+1. Manual adjustments to accounts..
+2. tenant portal - where they can view and manage their accounts
+3. customer portal - when I am doing propert management for somebody else
+4. rental applications - this is more US style than dubai
+5. misc charges not included in rental  - e.g. tenant has to pay association charges 
+6. Add work orders - e.g. tenant needs job X done, we should track it
+7. Receipts - print a receipt, or take a picture of a paper receipt I issue 
 
